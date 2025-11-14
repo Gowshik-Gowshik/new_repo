@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    
+    <style>
+        /* GLOBAL STYLES & RESET */
+        :root {
+            --primary-color: #3498db; /* Blue */
+            --secondary-color: #2c3e50; /* Dark Navy */
+            --text-color: #333;
+            --light-bg: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        /* LINKS AND BUTTONS */
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #2980b9; /* A slightly darker blue */
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 0.8em;
+            color: var(--secondary-color);
+        }
+
+        /* SECTION STYLING */
+        section {
+            padding: 60px 5%; /* Vertical padding and 5% horizontal padding */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* NAVIGATION BAR */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background-color: var(--light-bg);
+            min-height: 100vh;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 0.2em;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        /* SKILLS SECTION */
+        .skills {
+            background-color: var(--light-bg);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: var(--white);
+            color: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        /* PROJECTS SECTION */
+        .projects {
+            background-color: var(--white);
+        }
+        
+        /* Grid layout for projects for better visual structure */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .project-card {
+            background: var(--light-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+        }
+
+        /* FOOTER/CONTACT */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 20px 5%;
+            text-align: center;
+        }
+
+        .contact-links a {
+            color: var(--white);
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* RESPONSIVENESS (Mobile devices) */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simple way to hide links on small screen for basic CSS only */
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.2em;
+            }
+
+            .skills-grid {
+                flex-direction: column;
+                width: 80%;
+            }
+
+            .projects-container {
+                display: block; /* Stack cards vertically on small screens */
+            }
+            
+            .project-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Your Name</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm **Your Name**</h1>
+            <p>A passionate **[Your Field/Role]** specializing in **HTML and CSS**.</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+        <p style="margin-top: 20px; color: #555;"></p>
+    </section>
+
+    <section id="about" class="about">
+        <h2>👋 About Me</h2>
+        <div class="about-content">
+            <p>I started my journey with web development because I love turning ideas into clean, functional interfaces. I'm dedicated to continuous learning and building responsive, user-friendly websites.</p>
+            <p>When I'm not coding, I enjoy **[Your Hobby]** and **[Another Hobby]**.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>🛠️ My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">HTML5</div>
+            <div class="skill-item">CSS3</div>
+            <div class="skill-item">Responsive Design</div>
+            <div class="skill-item">Flexbox & Grid</div>
+            <div class="skill-item">Git/GitHub</div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>✨ Featured Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Project One: Landing Page</h3>
+                <p>A clean, single-page website demonstrating strong layout and CSS positioning.</p>
+                <a href="#" target="_blank">View Live</a> | <a href="#" target="_blank">Source Code</a>
+            </div>
+            <div class="project-card">
+                <h3>Project Two: Simple Blog Layout</h3>
+                <p>A responsive layout showcasing media queries and basic typography skills.</p>
+                <a href="#" target="_blank">View Live</a> | <a href="#" target="_blank">Source Code</a>
+            </div>
+            <div class="project-card">
+                <h3>Project Three: CSS Art/Animation</h3>
+                <p>A fun project using pure CSS to create a complex shape or animation.</p>
+                <a href="#" target="_blank">View Live</a> | <a href="#" target="_blank">Source Code</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <div class="contact-links">
+            <a href="mailto:your.email@example.com">Email Me</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
+</body>
+</html>
