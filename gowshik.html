@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Gowshik's Portfolio - MERN Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         /* GLOBAL STYLES & RESET */
         :root {
             --primary-color: #3498db; /* Blue */
             --secondary-color: #2c3e50; /* Dark Navy */
+            --accent-color: #e74c3c; /* Red for emphasis */
             --text-color: #333;
-            --light-bg: #f4f4f4;
+            --light-bg: #f8f9fa; /* Lighter background */
             --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Standard Shadow */
         }
 
         * {
@@ -22,8 +26,8 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif; /* Applied new font */
+            line-height: 1.7; /* Increased line height for readability */
             color: var(--text-color);
             background-color: var(--white);
             scroll-behavior: smooth;
@@ -37,30 +41,36 @@
         }
 
         a:hover {
-            color: #2980b9; /* A slightly darker blue */
+            color: #2980b9; 
         }
 
         h1, h2, h3 {
             margin-bottom: 0.8em;
             color: var(--secondary-color);
+            font-weight: 700; /* Bolder headings */
+        }
+        
+        h2 {
+            font-size: 2.5em;
         }
 
         /* SECTION STYLING */
         section {
-            padding: 60px 5%; /* Vertical padding and 5% horizontal padding */
+            padding: 80px 5%; /* Increased vertical padding */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            position: relative;
         }
 
         /* NAVIGATION BAR */
         header {
             background: var(--white);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: fixed;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slightly heavier shadow */
+            position: sticky; /* Changed to sticky for modern feel */
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -71,12 +81,14 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--secondary-color);
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
         .nav-links {
@@ -85,14 +97,31 @@
         }
 
         .nav-links li {
-            margin-left: 20px;
+            margin-left: 30px;
         }
 
         .nav-links a {
             color: var(--secondary-color);
-            font-weight: 500;
+            font-weight: 600;
             padding: 5px 0;
             position: relative;
+            transition: color 0.3s;
+        }
+        
+        /* Navigation Hover Animation (Underline) */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -101,49 +130,78 @@
 
         /* HERO SECTION */
         .hero {
-            background-color: var(--light-bg);
+            /* Added background image for visual interest */
+            background: url('') no-repeat center center/cover; 
+            color: var(--white);
             min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Overlay to make text readable */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Darker overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            color: var(--white);
+            max-width: 800px;
+            padding: 20px;
         }
 
         .hero-content h1 {
-            font-size: 3em;
-            margin-bottom: 0.2em;
+            font-size: 4em;
+            margin-bottom: 0.1em;
+            color: var(--white);
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary-color);
         }
 
         .hero-content p {
-            font-size: 1.5em;
-            margin-bottom: 25px;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            font-weight: 300;
         }
 
         .cta-button {
             display: inline-block;
             background: var(--primary-color);
             color: var(--white);
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 14px 30px;
+            border-radius: 50px; /* Pill shape */
             font-weight: bold;
             letter-spacing: 1px;
-            transition: background 0.3s, transform 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
         }
 
         .cta-button:hover {
             background: #2980b9;
-            transform: translateY(-2px);
+            transform: scale(1.05); /* Subtle scale animation */
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.6);
         }
 
         /* ABOUT SECTION */
         .about {
             background-color: var(--white);
+            text-align: center;
         }
 
         .about-content {
-            max-width: 800px;
-            text-align: left;
-            margin-top: 20px;
-        }
-
-        .about-content p {
-            margin-bottom: 15px;
+            max-width: 900px;
+            text-align: justify; /* Aligned text for better flow */
+            margin-top: 30px;
+            font-size: 1.1em;
         }
 
         /* SKILLS SECTION */
@@ -155,19 +213,26 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            max-width: 900px;
-            margin-top: 20px;
+            gap: 20px;
+            max-width: 1000px;
+            margin-top: 30px;
         }
 
         .skill-item {
             background: var(--white);
             color: var(--secondary-color);
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, background 0.3s; /* Animation for skills */
+            cursor: default;
+        }
+        
+        .skill-item:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.02); /* Pop-up animation */
         }
 
         /* PROJECTS SECTION */
@@ -175,80 +240,132 @@
             background-color: var(--white);
         }
         
-        /* Grid layout for projects for better visual structure */
         .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             max-width: 1200px;
-            margin-top: 30px;
+            margin-top: 40px;
             width: 100%;
         }
 
         .project-card {
             background: var(--light-bg);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 0; /* Remove padding here, add to content */
+            box-shadow: var(--shadow);
             transition: transform 0.3s;
             text-align: left;
+            overflow: hidden; /* Contains the image */
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #bdc3c7, #7f8c8d); /* Gradient placeholder */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: var(--white);
+            font-weight: 600;
+            overflow: hidden;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        
+        .project-content {
+            padding: 20px;
         }
 
         .project-card h3 {
             margin-top: 0;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+        
+        .project-links a {
+            margin-right: 15px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .project-links a i {
+            margin-right: 5px;
         }
 
         /* FOOTER/CONTACT */
         footer {
             background: var(--secondary-color);
             color: var(--white);
-            padding: 20px 5%;
+            padding: 40px 5%;
             text-align: center;
+        }
+
+        .contact-links {
+            margin-top: 15px;
         }
 
         .contact-links a {
             color: var(--white);
-            margin: 0 10px;
+            margin: 0 15px;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
         }
-
+        
         .contact-links a:hover {
             color: var(--primary-color);
         }
+        
+        .contact-links a i {
+            margin-right: 5px;
+        }
 
         /* RESPONSIVENESS (Mobile devices) */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .nav-links {
-                display: none; /* Simple way to hide links on small screen for basic CSS only */
+                display: none; 
             }
 
             nav {
                 justify-content: center;
             }
-
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 5%;
+            }
+            
             .hero-content h1 {
-                font-size: 2.5em;
+                font-size: 3em;
             }
 
             .hero-content p {
-                font-size: 1.2em;
+                font-size: 1.4em;
             }
-
+            
             .skills-grid {
-                flex-direction: column;
-                width: 80%;
+                gap: 10px;
+            }
+            
+            .skill-item {
+                padding: 10px 18px;
             }
 
             .projects-container {
-                display: block; /* Stack cards vertically on small screens */
+                grid-template-columns: 1fr; 
             }
             
-            .project-card {
-                margin-bottom: 20px;
+            .about-content {
+                text-align: left;
             }
         }
     </style>
@@ -257,7 +374,7 @@
 
     <header>
         <nav>
-            <div class="logo">Your Name</div>
+            <div class="logo">Gowshik</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -270,60 +387,94 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm **Your Name**</h1>
-            <p>A passionate **[Your Field/Role]** specializing in **HTML and CSS**.</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <h1>Hi, I'm <span>Gowshik</span></h1>
+            <p>A passionate MERN stack developer dedicated to building elegant and efficient web applications.</p>
+            <a href="#projects" class="cta-button">View My Work <i class="fas fa-arrow-right"></i></a>
         </div>
-        <p style="margin-top: 20px; color: #555;"></p>
     </section>
 
     <section id="about" class="about">
         <h2>👋 About Me</h2>
         <div class="about-content">
-            <p>I started my journey with web development because I love turning ideas into clean, functional interfaces. I'm dedicated to continuous learning and building responsive, user-friendly websites.</p>
-            <p>When I'm not coding, I enjoy **[Your Hobby]** and **[Another Hobby]**.</p>
+            <p>I started my journey with web development because I love turning ideas into clean, functional interfaces. I specialize in the **MERN stack (MongoDB, Express, React, Node.js)**, focusing on creating responsive, performant, and user-friendly web applications from concept to deployment.</p>
+            <p>I am dedicated to continuous learning and embracing new technologies to solve complex problems. My philosophy is to write clean, maintainable, and scalable code.</p>
+            <p>When I'm not coding, I enjoy **playing competitive chess** and **exploring new hiking trails**.</p>
         </div>
     </section>
 
     <section id="skills" class="skills">
         <h2>🛠️ My Skills</h2>
         <div class="skills-grid">
-            <div class="skill-item">HTML5</div>
-            <div class="skill-item">CSS3</div>
+            <div class="skill-item"><i class="fab fa-react"></i> React.js</div>
+            <div class="skill-item"><i class="fab fa-js"></i> JavaScript (ES6+)</div>
+            <div class="skill-item"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS3 / SCSS</div>
             <div class="skill-item">Responsive Design</div>
-            <div class="skill-item">Flexbox & Grid</div>
-            <div class="skill-item">Git/GitHub</div>
+            <div class="skill-item"><i class="fab fa-node-js"></i> Node.js</div>
+            <div class="skill-item">Express.js</div>
+            <div class="skill-item"><i class="fas fa-database"></i> MongoDB</div>
+            <div class="skill-item"><i class="fab fa-git-alt"></i> Git/GitHub</div>
+            <div class="skill-item"><i class="fas fa-cloud"></i> REST APIs</div>
+            <div class="skill-item">Webpack/Babel</div>
         </div>
     </section>
 
     <section id="projects" class="projects">
         <h2>✨ Featured Projects</h2>
         <div class="projects-container">
+            
             <div class="project-card">
-                <h3>Project One: Landing Page</h3>
-                <p>A clean, single-page website demonstrating strong layout and CSS positioning.</p>
-                <a href="#" target="_blank">View Live</a> | <a href="#" target="_blank">Source Code</a>
+                <div class="project-image-placeholder">
+                    Project One 
+                </div>
+                <div class="project-content">
+                    <h3>MERN E-Commerce Platform</h3>
+                    <p>A full-stack e-commerce site with user authentication, product management, and a Stripe payment gateway. Built entirely on the MERN stack.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-eye"></i> View Live</a> 
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
+                </div>
             </div>
+
             <div class="project-card">
-                <h3>Project Two: Simple Blog Layout</h3>
-                <p>A responsive layout showcasing media queries and basic typography skills.</p>
-                <a href="#" target="_blank">View Live</a> | <a href="#" target="_blank">Source Code</a>
+                <div class="project-image-placeholder">
+                    Project Two 
+                </div>
+                <div class="project-content">
+                    <h3>Real-Time Chat Application</h3>
+                    <p>Features real-time messaging using Socket.IO, JWT authentication, and a clean, responsive React frontend.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-eye"></i> View Live</a> 
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
+                </div>
             </div>
+
             <div class="project-card">
-                <h3>Project Three: CSS Art/Animation</h3>
-                <p>A fun project using pure CSS to create a complex shape or animation.</p>
-                <a href="#" target="_blank">View Live</a> | <a href="#" target="_blank">Source Code</a>
+                <div class="project-image-placeholder">
+                    Project Three 
+                </div>
+                <div class="project-content">
+                    <h3>Task Management API</h3>
+                    <p>A robust backend API using Node/Express and MongoDB, designed for task and user management. Focus on RESTful principles.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-eye"></i> API Docs</a> 
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <h2>Let's Connect!</h2>
         <div class="contact-links">
-            <a href="mailto:your.email@example.com">Email Me</a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="mailto:gowshik.dev@example.com"><i class="fas fa-envelope"></i> Email Me</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </div>
+        <p style="margin-top: 15px;">Built with <i class="fas fa-heart" style="color: var(--accent-color);"></i> by Gowshik &copy; 2025</p>
     </footer>
 
 </body>
